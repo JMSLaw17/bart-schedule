@@ -3,7 +3,7 @@ import StationSearchBar from './StationSearchBar';
 import StationListByCity from './StationListByCity';
 import AllTrainsForStation from './AllTrainsForStation';
 import getStationList from '../services/bart/getStationList';
-import getIncomingTrains from '../services/bart/getIncomingTrains';
+import getIncomingTrainsForStation from '../services/bart/getIncomingTrainsForStation';
 import '../styles/App.css';
 
 class App extends Component {
@@ -113,13 +113,11 @@ class App extends Component {
   }
 
   getAllTrainsForStation(stationAbbreviation) {
-    return Promise.all([getIncomingTrains(stationAbbreviation, 'n'),
-                        getIncomingTrains(stationAbbreviation, 's')])
+    return getIncomingTrainsForStation(stationAbbreviation)
       .then(trainData => {
         const allTrainsForStation = {};
-        allTrainsForStation.station = trainData[0].root.station[0].name;
-        allTrainsForStation.northbound = this.processTrainData(trainData[0]);
-        allTrainsForStation.southbound = this.processTrainData(trainData[1]);
+        allTrainsForStation.station = trainData.root.station[0].name;
+        allTrainsForStation.trainsByDestination = this.processTrainData(trainData);
 
         return allTrainsForStation;
       });

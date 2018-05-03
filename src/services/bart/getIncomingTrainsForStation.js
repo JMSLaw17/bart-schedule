@@ -1,14 +1,13 @@
 import apiUrl from './apiUrl';
 import publicAPIKey from './publicAPIKey';
 
-const getIncomingTrains = (stationAbbreviation, direction) => {
+const getIncomingTrainsForStation = (stationAbbreviation) => {
   const url = new URL(apiUrl + 'etd.aspx');
 
   url.search = new URLSearchParams({
     cmd: 'etd',
     orig: stationAbbreviation,
     key: publicAPIKey,
-    dir: direction,
     json: 'y',
   });
 
@@ -16,4 +15,4 @@ const getIncomingTrains = (stationAbbreviation, direction) => {
     .then(data => data.json());
 };
 
-export default getIncomingTrains;
+export default getIncomingTrainsForStation;
