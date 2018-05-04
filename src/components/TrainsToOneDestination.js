@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Train from './Train';
 
 const TrainsToOneDestination = (props) => {
@@ -10,6 +11,11 @@ const TrainsToOneDestination = (props) => {
       </ol>
     </div>
   );
+};
+
+TrainsToOneDestination.propTypes = {
+  destination: PropTypes.string.isRequired,
+  trains: PropTypes.array.isRequired,
 };
 
 export default TrainsToOneDestination;

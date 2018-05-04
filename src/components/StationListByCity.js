@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import StationsForCity from './StationsForCity';
 
 const StationListByCity = (props) => {
@@ -9,6 +10,11 @@ const StationListByCity = (props) => {
                        handleStationNameClick={props.handleStationNameClick}/>)}
     </div>
   );
+};
+
+StationListByCity.propTypes = {
+  stationsByCity: PropTypes.array.isRequired,
+  handleStationNameClick: PropTypes.func.isRequired,
 };
 
 export default StationListByCity;
