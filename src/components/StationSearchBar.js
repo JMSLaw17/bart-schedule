@@ -7,7 +7,7 @@ const StationSearchBar = (props) => {
   );
 };
 
-StationSearchBar = {
+StationSearchBar.propTypes = {
   searchBarText: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
