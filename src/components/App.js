@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       searchBarText: '',
       allStations: [],
-      allTrainsForStation: null,
+      allTrainsForStation: {},
+      trainsVisible: false,
     };
   }
 
@@ -99,7 +100,7 @@ class App extends Component {
 
   handleCloseTrainScheduleClick() {
     this.setState({
-      allTrainsForStation: null,
+      trainsVisible: false,
     });
   }
 
@@ -108,6 +109,7 @@ class App extends Component {
       .then(allTrainsForStation => {
         this.setState({
           allTrainsForStation,
+          trainsVisible: true,
         });
       });
   }
@@ -153,7 +155,7 @@ class App extends Component {
     return (
       <div className="App">
         {
-          this.state.allTrainsForStation
+          this.state.trainsVisible
           ?
             <AllTrainsForStation allTrains={this.state.allTrainsForStation} handleCloseTrainScheduleClick={this.handleCloseTrainScheduleClick.bind(this)}/>
           :
