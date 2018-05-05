@@ -6,7 +6,7 @@ import '../styles/AllTrainsForStation.css';
 const AllTrainsForStation = (props) => {
   return (
     <div className="all-trains">
-      <button className="close-panel" onClick={props.handleCloseTrainScheduleClick}>❌</button>
+      <button className="close-panel" onClick={props.handleCloseTrainScheduleClick}><span role="img" aria-label="X">❌</span></button>
       <div className="station-intro">Inbound Train Schedule for</div>
       <div className="selected-station">{props.allTrains.station}</div>
       {

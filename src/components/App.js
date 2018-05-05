@@ -30,7 +30,13 @@ class App extends Component {
 
   processStationList(stationList) {
     // formats data from bart's api regarding all bart stations
+
+    if (!stationList || !stationList.root || !stationList.root.stations ||
+        !Array.isArray(stationList.root.stations.station))
+      throw new Error('stationList not formatted as expected');
+
     const stations = stationList.root.stations.station;
+
 
     return stations.map(station => {
       const { name, abbr, city } = station;
@@ -128,6 +134,9 @@ class App extends Component {
     return getIncomingTrainsForStation(stationAbbreviation)
       .then(trainData => {
         const allTrainsForStation = {};
+        if (!trainData || !trainData.root || !trainData.root.station || !trainData.root.station[0])
+          throw new Error('trainData not formatted as expected');
+
         allTrainsForStation.station = trainData.root.station[0].name;
         allTrainsForStation.trainsByDestination = this.processTrainData(trainData);
 
