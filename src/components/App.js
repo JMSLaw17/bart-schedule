@@ -29,6 +29,7 @@ class App extends Component {
   }
 
   processStationList(stationList) {
+    // formats data from bart's api regarding all bart stations
     const stations = stationList.root.stations.station;
 
     return stations.map(station => {
@@ -43,6 +44,7 @@ class App extends Component {
   }
 
   filterStationsBySearch(query, stations) {
+    // returns a list of the stations with a name or city name that includes the query
     query = query.toLowerCase();
     const filteredList = []
 
@@ -61,6 +63,7 @@ class App extends Component {
   }
 
   organizeStationsByCity(stations) {
+    // groups stations by the city they are in
     const cityToStationsMap = {};
 
     stations.forEach(station => {
@@ -79,6 +82,8 @@ class App extends Component {
   }
 
   convertCityToStationsMapToList(cityToStationsMap) {
+    // creates a list of city objects and sorts them by name
+    // city objects have a name property and a list of stations in the city sorted by name
     const stationsByCity = [];
 
     for (let city in cityToStationsMap) {
@@ -93,6 +98,12 @@ class App extends Component {
     return stationsByCity.sort((a, b) => a.cityName > b.cityName ? 1 : -1);
   }
 
+  showStationList() {
+    this.setState({
+      trainsVisible: false,
+    });
+  }
+
   handleSearchBarTextChange(e) {
     this.setState({
       searchBarText: e.target.value,
@@ -100,9 +111,7 @@ class App extends Component {
   }
 
   handleCloseTrainScheduleClick() {
-    this.setState({
-      trainsVisible: false,
-    });
+    this.showStationList();
   }
 
   handleStationNameClick(stationAbbreviation) {
@@ -127,6 +136,7 @@ class App extends Component {
   }
 
   processTrainData(trainData) {
+    // formats data from bart's api regarding a station's train schedule
     const trainSchedule = trainData.root.station[0].etd;
     const trainsByDestination = [];
 
@@ -156,7 +166,7 @@ class App extends Component {
     return (
       <div className="App">
       <div className="header">
-        <img className="logo" src={logo} alt={''}/>
+        <img className="logo" onClick={this.showStationList.bind(this)} src={logo} alt={''}/>
       </div>
         {
           this.state.trainsVisible

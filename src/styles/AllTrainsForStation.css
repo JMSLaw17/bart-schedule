@@ -13,6 +13,7 @@
   border: none;
   margin: -30px;
   float: left;
+  cursor: pointer;
 }
 
 .no-trains-message {
