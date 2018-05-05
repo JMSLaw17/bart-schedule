@@ -1,0 +1,36 @@
+.all-trains {
+  text-align: left;
+  width: 350px;
+  margin: 30px auto;
+  border-radius: 10px;
+  border: outset;
+  padding: 30px;
+  background-color: #B1FFFF;
+}
+
+.close-panel {
+  background: transparent;
+  border: none;
+  margin: -30px;
+  float: left;
+}
+
+.no-trains-message {
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.station-intro {
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.selected-station {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 15px;
+  text-align: center;
+}

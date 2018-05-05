@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/Train.css';
 
 const Train = (props) => {
   return (
-    <div>{`Train arrives in ${props.eta} Minutes`}</div>
+    <div className="train-time">
+      {props.eta === 'Leaving'
+      ?
+        'Leaving Station'
+      :
+        `${props.eta} minutes`}
+    </div>
   );
 };
 

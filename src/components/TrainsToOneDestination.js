@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Train from './Train';
+import '../styles/TrainsToOneDestination.css';
 
 const TrainsToOneDestination = (props) => {
   return (
-    <div>
-      <h4>{props.destination}</h4>
-      <ol>
-        {props.trains.map((eta, i) => <Train key={i} eta={eta}/>)}
-      </ol>
+    <div className="one-destination">
+      <div className="destination-name">{`${props.destination}-bound`}</div>
+          {props.trains.map((eta, i) => <Train key={i} eta={eta}/>)}
     </div>
   );
 };

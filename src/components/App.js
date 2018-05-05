@@ -4,6 +4,7 @@ import StationListByCity from './StationListByCity';
 import AllTrainsForStation from './AllTrainsForStation';
 import getStationList from '../services/bart/getStationList';
 import getIncomingTrainsForStation from '../services/bart/getIncomingTrainsForStation';
+import logo from '../assets/logo.png';
 import '../styles/App.css';
 
 class App extends Component {
@@ -154,15 +155,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <div className="header">
+        <img className="logo" src={logo} alt={''}/>
+      </div>
         {
           this.state.trainsVisible
           ?
             <AllTrainsForStation allTrains={this.state.allTrainsForStation} handleCloseTrainScheduleClick={this.handleCloseTrainScheduleClick.bind(this)}/>
           :
-            <div>
-              <p>
-                Select a Station
-              </p>
+            <div className="wrapper">
               <StationSearchBar searchBarText={this.state.searchBarText} handleChange={this.handleSearchBarTextChange.bind(this)}/>
               <StationListByCity stationsByCity={this.organizeStationsByCity(this.filterStationsBySearch(this.state.searchBarText, this.state.allStations))}
                                   handleStationNameClick={this.handleStationNameClick.bind(this)}/>

@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Station from './Station';
+import '../styles/StationsForCity.css';
 
 const StationsForCity = (props) => {
   return (
     <div>
-      <h3>{`Stations in ${props.cityName}`}</h3>
-      <div>
+      <p className='city'>{`Stations in ${props.cityName}`}</p>
         {props.stations.map((station, i) => <Station key={i} stationData={station}
                                                      handleStationNameClick={props.handleStationNameClick}/>)}
-      </div>
     </div>
   );
 };

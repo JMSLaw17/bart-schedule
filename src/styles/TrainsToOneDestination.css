@@ -1,0 +1,12 @@
+.one-destination {
+  margin-bottom: 10px;
+  background-color: rgb(150, 150, 150);
+  border-radius: 10px;
+  border: outset;
+  padding: 5px;
+}
+
+.destination-name {
+  font-weight: 600;
+  margin-bottom: 5px;
+}

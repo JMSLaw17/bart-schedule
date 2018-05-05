@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/Station.css';
 
 const Station = (props) => {
   return (
-    <div onClick={() => props.handleStationNameClick(props.stationData.abbr)}>
+    <div className="station" onClick={() => props.handleStationNameClick(props.stationData.abbr)}>
       {props.stationData.name}
     </div>
   );

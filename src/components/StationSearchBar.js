@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/StationSearchBar.css';
 
 const StationSearchBar = (props) => {
   return (
-    <input type="text" value={props.searchBarText} onChange={props.handleChange}/>
+    <div>
+      <p className="search-bar-title">
+        Select station for times
+      </p>
+      <input className="search" type="text" placeholder="🔍 Search" value={props.searchBarText} onChange={props.handleChange}/>
+    </div>
   );
 };
 
