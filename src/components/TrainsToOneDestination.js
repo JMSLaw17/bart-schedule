@@ -6,8 +6,8 @@ import '../styles/TrainsToOneDestination.css';
 const TrainsToOneDestination = (props) => {
   return (
     <div className="one-destination">
-      <div className="destination-name">{`${props.destination}-bound`}</div>
-          {props.trains.map((eta, i) => <Train key={i} eta={eta}/>)}
+      <div className="destination-name">{`To ${props.destination}`}</div>
+          {props.trains.map((train, i) => <Train key={i} etd={train.etd} platform={train.platform}/>)}
     </div>
   );
 };

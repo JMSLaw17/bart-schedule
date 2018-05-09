@@ -5,17 +5,18 @@ import '../styles/Train.css';
 const Train = (props) => {
   return (
     <div className="train-time">
-      {props.eta === 'Leaving'
+      {props.etd === 'Leaving'
       ?
-        'Leaving Station'
+        `Leaving station now from platform ${props.platform}`
       :
-        `${props.eta} minutes`}
+        `Departing in ${props.etd} minute${props.etd === '1' ? '' : 's'} from platform ${props.platform}`}
     </div>
   );
 };
 
 Train.propTypes = {
-  eta: PropTypes.string.isRequired,
+  etd: PropTypes.string.isRequired,
+  platform: PropTypes.string.isRequired,
 };
 
 export default Train;

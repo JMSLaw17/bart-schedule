@@ -7,12 +7,12 @@ const AllTrainsForStation = (props) => {
   return (
     <div className="all-trains">
       <button className="close-panel" onClick={props.handleCloseTrainScheduleClick}><span role="img" aria-label="X">❌</span></button>
-      <div className="station-intro">Inbound Train Schedule for</div>
-      <div className="selected-station">{props.allTrains.station}</div>
+      <div className="station-intro">Trains Departing From</div>
+      <div className="selected-station">{props.allTrains.station} Station</div>
       {
         props.allTrains.trainsByDestination.length
         ?
-          props.allTrains.trainsByDestination.map((trains, i) => <TrainsToOneDestination key={i} destination={trains.destination} trains={trains.etas}/>)
+          props.allTrains.trainsByDestination.map((trains, i) => <TrainsToOneDestination key={i} destination={trains.destination} trains={trains.trains}/>)
         :
           <p className="no-trains-message">No Trains Currently Inbound</p>
       }

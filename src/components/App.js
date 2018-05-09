@@ -156,14 +156,17 @@ class App extends Component {
     trainSchedule.forEach(destination => {
       destinationInfo = {
         destination: destination.destination,
-        etas: [],
+        trains: [],
       };
 
       destination.estimate.forEach(train => {
-        destinationInfo.etas.push(train.minutes);
+        destinationInfo.trains.push({
+          etd: train.minutes,
+          platform: train.platform,
+        });
       });
       
-      destinationInfo.etas.sort((a, b) => a - b);
+      destinationInfo.trains.sort((a, b) => Number(a.minutes) - Number(b.minutes));
 
       trainsByDestination.push(destinationInfo);
     });
